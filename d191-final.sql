@@ -85,7 +85,7 @@ begin
 end
 $$
 
---  creates a trigger on the detailed table of the report that will continually update the summary table as data is added to the detailed table. 
+-- insert into the summary table
 truncate summary;
 insert into summary (
 	category_id_name,
@@ -97,6 +97,7 @@ insert into summary (
    group by combo(category_id, category_name)
    order by category_cnt desc;
 
+--  creates a trigger on the detailed table of the report that will continually update the summary table as data is added to the detailed table. 
 
 -- stored procedure to be called using trigger function
 create or replace procedure refresh_summary()
@@ -181,7 +182,6 @@ on payment -- one of the base tables
 	for each statement
 	execute procedure insert_trigger_function();
 
--- trigger function
 -- trigger function calles the stored procedure
 create or replace function insert_trigger_function()
 returns trigger
@@ -198,6 +198,8 @@ end; $$
 
 -- check customer 341 
 select count(*) from detailed where customer_id=341 group by customer_id;   -- n=24
+-- check summary table
+select * from summary; -- 17 categories 
 
 -- insert some data base tables to verify trigger and stored procedure 
 
