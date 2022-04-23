@@ -23,9 +23,9 @@ where top_10_pct = 1;
 
 -- match above with their corresponding film, film category, actor, and their address (city, country)
         -- 1. what are the favorite films including categories and actors of our top 10% paying customers?   
-        -- 2. where are our top 10% paying customers? 
+ 
 -- match above with their corresponding staff_id 
-        -- 3. which staff are responsible for bringing in most money?
+        -- 2. which staff are responsible for bringing in most money?
 
 
 -- 1. what are the favorite films including categories and actors of our top 10% paying customers?
@@ -99,7 +99,6 @@ left join actor as b
         on a.actor_id = b.actor_id
 left join category as c
         on a.category_id = c.category_id;
-
 
 -- final actionable insights
 
