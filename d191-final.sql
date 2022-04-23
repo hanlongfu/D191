@@ -198,8 +198,6 @@ end; $$
 
 -- check customer 341 
 select count(*) from detailed where customer_id=341 group by customer_id;   -- n=24
--- check summary table
-select * from summary; -- 17 categories 
 
 -- insert some data base tables to verify trigger and stored procedure 
 
